@@ -15,11 +15,14 @@ class LoginPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          ElevatedButton(
-            onPressed: () {
-              context.goNamed(HomePage.name);
-            },
-            child: const Text('Se connecter'),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ElevatedButton(
+              onPressed: () {
+                context.goNamed(HomePage.name);
+              },
+              child: const Text('Se connecter'),
+            ),
           ),
         ],
       ),
