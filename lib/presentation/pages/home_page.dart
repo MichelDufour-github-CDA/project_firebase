@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
         title: const Text('Home Page'),
       ),
       body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         children: const [
           Text('Welcome home'),
         ],
