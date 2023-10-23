@@ -32,6 +32,6 @@ abstract class AuthenticationDataSource {
         return UserModel(email: firebaseUser.email);
       }
       return null;
-    });
+    }).asBroadcastStream();
   }
 }
