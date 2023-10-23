@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "812207121125",
+    "project_id": "fir-pegase",
+    "storage_bucket": "fir-pegase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812207121125:android:bb1a985cde917cd7416a0c",
+        "android_client_info": {
+          "package_name": "com.example.firebase_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpoO6U6Hmd79J8dqt962-8B0e5Q20-pRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812207121125:android:37f8c25b73e2c27d416a0c",
+        "android_client_info": {
+          "package_name": "com.example.project_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpoO6U6Hmd79J8dqt962-8B0e5Q20-pRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
