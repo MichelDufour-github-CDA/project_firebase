@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_firebase/blocks/authentication_cubit.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,12 +12,22 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Page'),
-      ),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        children: const [
-          Text('Welcome home'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                context.read<AuthenticationCubit>().logout();
+              },
+              icon: const Icon(Icons.logout_rounded))
         ],
+      ),
+      body: BlocBuilder<AuthenticationCubit, AuthenticationState>(
+        builder: (context, state) {
+          if (state.currentUser != null) {
+            return Text('Hello ${state.currentUser!.email} !');
+          }
+
+          return const Text('Hello !');
+        },
       ),
     );
   }
