@@ -28,8 +28,20 @@ class HomePage extends StatelessWidget {
             if (state is StudentStateLoaded) {
               return ListView.builder(
                 itemCount: state.students.length,
-                itemBuilder: (context, index) =>
-                    Text(state.students.elementAt(index).firstName ?? 'Error'),
+                itemBuilder: (context, index) {
+                  final student = state.students.elementAt(index);
+                  return ListTile(
+                    title: Text(student.firstName ?? 'Error'),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(student.lastName ?? 'Error'),
+                        Text(
+                            'Langage préféré: ${student.favoriteLanguage ?? 'Unknown'}'),
+                      ],
+                    ),
+                  );
+                },
               );
             }
             return const SizedBox.shrink();
