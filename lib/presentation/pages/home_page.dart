@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_firebase/blocks/authentication_cubit.dart';
 import 'package:project_firebase/blocks/student_cubit.dart';
+import 'package:project_firebase/presentation/widgets/student_list.dart';
+import 'package:project_firebase/presentation/widgets/student_submit_form.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -23,29 +25,23 @@ class HomePage extends StatelessWidget {
       ),
       body: BlocProvider<StudentCubit>(
         create: (_) => StudentCubit()..getStudents(),
-        child: BlocBuilder<StudentCubit, StudentState>(
-          builder: (context, state) {
-            if (state is StudentStateLoaded) {
-              return ListView.builder(
-                itemCount: state.students.length,
-                itemBuilder: (context, index) {
-                  final student = state.students.elementAt(index);
-                  return ListTile(
-                    title: Text(student.firstName ?? 'Error'),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(student.lastName ?? 'Error'),
-                        Text(
-                            'Langage préféré: ${student.favoriteLanguage ?? 'Unknown'}'),
-                      ],
-                    ),
-                  );
-                },
-              );
-            }
-            return const SizedBox.shrink();
-          },
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          children: [
+            Text(
+              'Liste des étudiants',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const Divider(),
+            const StudentList(),
+            const Divider(),
+            Text(
+              'Ajouter un étudiant',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const Divider(),
+            StudentSubmitForm(),
+          ],
         ),
       ),
     );
