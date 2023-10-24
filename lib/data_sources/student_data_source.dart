@@ -14,4 +14,8 @@ abstract class StudentDataSource {
               .toList(),
         );
   }
+
+  static Future<void> addStudent(Map<String, dynamic> data) async {
+    await FirebaseFirestore.instance.collection('students').add(data);
+  }
 }
