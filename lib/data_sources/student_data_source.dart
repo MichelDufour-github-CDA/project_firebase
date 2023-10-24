@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:project_firebase/models/student_model.dart';
 
 abstract class StudentDataSource {
   static Stream<List<Map<String, dynamic>>> getStudents() {
