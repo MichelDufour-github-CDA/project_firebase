@@ -6,4 +6,7 @@ abstract class StudentService {
       StudentDataSource.getStudents().map(
         (data) => data.map((json) => StudentModel.fromJson(json)).toList(),
       );
+
+  static Future<void> addStudent(StudentModel student) =>
+      StudentDataSource.addStudent(student.toJson());
 }
