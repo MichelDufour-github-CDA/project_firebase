@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_firebase/blocks/authentication_cubit.dart';
 import 'package:project_firebase/firebase_options.dart';
 import 'package:project_firebase/router/app_router.dart';
 
@@ -19,8 +21,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: AppRouter.router,
+    return BlocProvider<AuthenticationCubit>(
+      create: (_) => AuthenticationCubit()..listenStatus(),
+      child: Builder(builder: (context) {
+        return MaterialApp.router(
+          routerConfig: AppRouter.routerOf(context),
+        );
+      }),
     );
   }
 }
