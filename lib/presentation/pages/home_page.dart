@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_firebase/blocks/authentication_cubit.dart';
+import 'package:project_firebase/blocks/student_cubit.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -20,14 +21,20 @@ class HomePage extends StatelessWidget {
               icon: const Icon(Icons.logout_rounded))
         ],
       ),
-      body: BlocBuilder<AuthenticationCubit, AuthenticationState>(
-        builder: (context, state) {
-          if (state.currentUser != null) {
-            return Text('Hello ${state.currentUser!.email} !');
-          }
-
-          return const Text('Hello !');
-        },
+      body: BlocProvider<StudentCubit>(
+        create: (_) => StudentCubit()..getStudents(),
+        child: BlocBuilder<StudentCubit, StudentState>(
+          builder: (context, state) {
+            if (state is StudentStateLoaded) {
+              return ListView.builder(
+                itemCount: state.students.length,
+                itemBuilder: (context, index) =>
+                    Text(state.students.elementAt(index).firstName ?? 'Error'),
+              );
+            }
+            return const SizedBox.shrink();
+          },
+        ),
       ),
     );
   }
