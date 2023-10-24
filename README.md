@@ -1,6 +1,6 @@
 # project_firebase
 
-## Ajouter les dépendences
+### Ajouter les dépendences
 ````bash
 flutter pub add go_router flutter_bloc firebase_core firebase_auth
 ````
@@ -14,7 +14,12 @@ firebase login
 dart pub global activate flutterfire_cli
 ````
 
-## Configure flutterfire
+### Configure flutterfire
 ````bash
 flutterfire configure
+````
+
+### Installation du package 'Cloud Firestore'
+````bash
+flutter pub add cloud_firestore
 ````
